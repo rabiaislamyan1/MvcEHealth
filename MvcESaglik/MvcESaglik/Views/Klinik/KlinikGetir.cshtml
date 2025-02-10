@@ -1,0 +1,21 @@
+﻿@model MvcESaglik.Models.Siniflar.Klinik
+@{
+    ViewBag.Title = "KlinikGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Klinik Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("KlinikGuncelle", "Klinik", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.KlinikID)
+    @Html.LabelFor(x => x.KlinikAd)
+    @Html.TextBoxFor(x => x.KlinikAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KlinikAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Durum, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

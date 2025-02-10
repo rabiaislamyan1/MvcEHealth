@@ -1,0 +1,70 @@
+﻿@model MvcESaglik.Models.Siniflar.DoktorProfil
+@{
+    Layout = null;
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+@using (Html.BeginForm("Index", "DoktorPanel", FormMethod.Post))
+{
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Profil</title>
+        <link href="~/webprf/css/style.css" rel='stylesheet' type='text/css' />
+        <link href="~/webprf/css/font-awesome.min.css" rel='stylesheet' type='text/css' />
+        <link href="~/webprf///fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Classy Profile Widget  Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script src="~/webprf/js/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="b-con">
+            <h1>Profil Bilgilerim</h1>
+            <div class="content-agile">
+                <div class="social-left-agileits">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-yahoo" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="profile-agileinfo">
+                    <div class="pr-inner">
+                        <img src="~/webprf/images/rsm.jpg" alt=" " width="150px" ; height="150px" />
+                        <h2></h2>
+                        <h2>@HttpContext.Current.User.Identity.Name</h2>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Adı: @Html.TextBoxFor(x => x.DoktorAd, new { @class = "form-control" })</h3>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Soyadı: @Html.TextBoxFor(x => x.DoktorSoyad, new { @class = "form-control" })</h3>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Yaş: @Html.TextBoxFor(x => x.Yas, new { @class = "form-control" })</h3>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Cinsiyet: @Html.TextBoxFor(x => x.Cinsiyet, new { @class = "form-control" })</h3>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Branş: @Html.TextBoxFor(x => x.Brans.BransAd, new { @class = "form-control" })</h3>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Kurum: @Html.TextBoxFor(x => x.Kurum.KurumAd, new { @class = "form-control" })</h3>
+                        <h3 style="font-family:Centaur; font-size:25px; color:lightyellow">Tel No: @Html.TextBoxFor(x => x.TelNo, new { @class = "form-control" })</h3>
+                    </div>
+                </div>
+                <div class="social-right-w3-agile">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="footer-w3l">
+                <p class="agileinfo"> &copy; 2017 Classy Profile Widget. All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+            </div>
+        </div>
+        <script src="~/webprf/js/bars.js"></script>
+    </body>
+</html>
+}

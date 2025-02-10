@@ -1,0 +1,29 @@
+﻿@model MvcESaglik.Models.Siniflar.Tahlil
+@{
+    ViewBag.Title = "TahlilEkle";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<br />
+<h2>Tahlil Girme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.İslemAdi)
+    @Html.TextBoxFor(x => x.İslemAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Sonuc)
+    @Html.TextBoxFor(x => x.Sonuc, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.ReferansDegeri)
+    @Html.TextBoxFor(x => x.ReferansDegeri, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tarih)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kurum.KurumID)
+    @Html.DropDownListFor(x => x.Kurumid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciProfil.TcNo)
+    @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

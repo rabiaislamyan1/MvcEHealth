@@ -1,0 +1,54 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Randevu>
+@{
+    ViewBag.Title = "RandevuDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Randevu Detay Sayfası</h2>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active" style="font-size:20px; color:blueviolet">Hastane Adı: @ViewBag.kurum</li>
+    </ol>
+    <table class="table table-hover" id="t01">
+        <tr>
+            <th>Randevu No</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Doktor</th>
+            <th>İlçe</th>
+            <th>Klinik</th>
+            <th>Hasta Adı</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@x.RandevuNo</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(x.Tarih).ToString("dd/MM/yyyy")</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Saat</td>
+                <td style="font-family:Centaur; font-size:22px">@x.DoktorProfil.DoktorAd @x.DoktorProfil.DoktorSoyad</td>
+                <td style="font-family:Centaur; font-size:22px">@x.İlce.İlceAd</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Klinik.KlinikAd</td>
+                <td style="font-family:Centaur; font-size:22px">@x.KullaniciProfil.KullaniciAd @x.KullaniciProfil.KullaniciSoyad</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

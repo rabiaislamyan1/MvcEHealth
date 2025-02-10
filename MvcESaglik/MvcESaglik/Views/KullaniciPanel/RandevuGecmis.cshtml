@@ -1,0 +1,57 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Randevu>
+@{
+    ViewBag.Title = "RandevuGecmis";
+    Layout = "~/Views/Shared/KullaniciLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Randevu</h2>
+    <br />
+    <table class="table table-condensed" id="t01">
+        <tr>
+            <th>Randevu No</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Kurum</th>
+            <th>Klinik</th>
+            <th>Hasta</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.RandevuNo</td>
+                <td>@Convert.ToDateTime(x.Tarih).ToString("dd/MM/yyyy")</td>
+                <td>@x.Saat</td>
+                <td>@x.Kurum.KurumAd</td>
+                <td>@x.Klinik.KlinikAd</td>
+                <td>@x.KullaniciProfil.KullaniciAd @x.KullaniciProfil.KullaniciSoyad</td>
+                <td>@Html.ActionLink("Sil","RandevuSil",new { id=x.RandevuNo},
+                   new {@class="btn btn-warning", onclick="return confirm('Silmek İstiyor musunuz?')"})</td>
+                <td><a href="/KullaniciPanel/RandevuGetir/@x.RandevuNo" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/KullaniciPanel/RandevuOlustur/" class="btn btn-primary">Yeni Randevu Oluştur</a>
+</body>
+</html>

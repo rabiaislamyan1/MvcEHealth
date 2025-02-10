@@ -1,0 +1,52 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<KullaniciProfil>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>KULLANICILAR</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Tc Kimlik No</th>
+            <th>Kullanıcı İsmi</th>
+            <th>Fotoğrafı</th>
+            <th>Cinsiyeti</th>
+            <th>Maili</th>
+            <th>İletişim</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var kllnc in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@kllnc.TcNo</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.KullaniciAd @kllnc.KullaniciSoyad</td>
+                <td><img src="@kllnc.KullaniciGorsel" style="width:100px; height:70px;" /></td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.Cinsiyet</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.KullaniciMail</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.TelNo</td>
+                <td><a href="/KullaniciProfil/KullaniciDetay/@kllnc.TcNo" class="btn btn-success" style="background-color:coral">Detay</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+</body>
+</html>

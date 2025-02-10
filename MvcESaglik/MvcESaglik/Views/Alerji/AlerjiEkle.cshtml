@@ -1,0 +1,18 @@
+﻿@model MvcESaglik.Models.Siniflar.Alerji
+@{
+    ViewBag.Title = "AlerjiEkle";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<br />
+<h2>Alerji Ekleme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.AlerjiAd)
+    @Html.TextBoxFor(x => x.AlerjiAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AlerjiAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciProfil.TcNo)
+    @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

@@ -1,0 +1,74 @@
+﻿@model MvcESaglik.Models.Siniflar.DoktorProfil
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<h2>Mvc Online E-Sağlık Doktor Bilgi Paneli</h2>
+<br />
+@using (Html.BeginForm("Index", "DoktorPanel", FormMethod.Post))
+{
+<table class="table table-hover">
+
+    <tr>
+        <td>
+            <label>Mail adresi: @HttpContext.Current.User.Identity.Name</label>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.DoktorAd, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.DoktorSoyad, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.Yas, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.Cinsiyet, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.DoktorMail, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.DoktorSifre, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.Brans.BransAd, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.Kurum.KurumAd, new { @class = "form-control" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.TelNo, new { @class = "form-control" })
+        </td>
+    </tr>
+
+</table>
+<button class="btn btn-warning">Bilgilerimi Güncelle</button>
+}

@@ -1,0 +1,23 @@
+﻿@model MvcESaglik.Models.Siniflar.İlce
+@{
+    ViewBag.Title = "İlceGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>İlçe Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("İlceGuncelle", "İlce", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.İlceID)
+    @Html.LabelFor(x => x.İlceAd)
+    @Html.TextBoxFor(x => x.İlceAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.İlceAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.İl.İlID)
+    @Html.DropDownListFor(x => x.İlid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

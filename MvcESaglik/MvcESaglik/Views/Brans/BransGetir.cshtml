@@ -1,0 +1,18 @@
+﻿@model MvcESaglik.Models.Siniflar.Brans
+@{
+    ViewBag.Title = "BransGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Branş Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("BransGuncelle", "Brans", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.BransID)
+        @Html.LabelFor(x => x.BransAd)
+        @Html.TextBoxFor(x => x.BransAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BransAd, "", new { @style = "color:red" })
+    </div>
+}
+<button class="btn btn-warning">Güncelle</button>

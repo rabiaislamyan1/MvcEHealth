@@ -1,0 +1,64 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MvcESaglik.Models.Siniflar
+@model PagedList.IPagedList<Klinik>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Klinik", FormMethod.Get))
+    {
+        <p style="color:deeppink">
+            Klinik Adı: @Html.TextBox("p")
+            <input type="submit" value="Ara" style="color:deepskyblue" />
+        </p>
+    }
+    <br />
+    <h2>KLİNİKLER</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Klinik ID</th>
+            <th>Klinik İsmi</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var klnk in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@klnk.KlinikID</td>
+                <td style="font-family:Centaur; font-size:22px">@klnk.KlinikAd</td>
+                <td>
+                    @Html.ActionLink("Sil", "KlinikSil", new { id = klnk.KlinikID },
+               new { @class = "btn btn-warning", onclick = "return confirm('Silmek İstiyor musunuz?')" })
+                </td>
+                <td><a href="/Klinik/KlinikGetir/@klnk.KlinikID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index",
+    new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
+    <br />
+    <a href="/Klinik/KlinikEkle/" class="btn btn-primary">Yeni Doktor Ekle</a>
+</body>
+</html>

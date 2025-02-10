@@ -1,0 +1,53 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Tahlil>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>TAHLİLLER</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Tahlil No</th>
+            <th>İşlem Adı</th>
+            <th>Sonuç</th>
+            <th>Referans Değeri</th>
+            <th>Tarih</th>
+            <th>Kurum</th>
+            <th>Hasta</th>
+        </tr>
+        @foreach (var kllnc in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@kllnc.TahlilNo</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.İslemAdi</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.Sonuc</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.ReferansDegeri</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(kllnc.Tarih).ToString("dd/MM/yyyy")</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.Kurum.KurumAd</td>
+                <td style="font-family:Centaur; font-size:22px">@kllnc.KullaniciProfil.KullaniciAd @kllnc.KullaniciProfil.KullaniciSoyad</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Tahlil/TahlilEkle/" class="btn btn-primary">Yeni Tahlil Gir</a>
+</body>
+</html>

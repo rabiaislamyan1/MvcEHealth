@@ -1,0 +1,46 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Recete>
+@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/Shared/KullaniciLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>REÇETELER</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Reçete No</th>
+            <th>Hasta</th>
+            <th>Yazan Doktor</th>
+            <th>Tarih</th>
+        </tr>
+        @foreach (var rct in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@rct.ReceteNo</td>
+                <td style="font-family:Centaur; font-size:22px">@rct.KullaniciProfil.KullaniciAd @rct.KullaniciProfil.KullaniciSoyad</td>
+                <td style="font-family:Centaur; font-size:22px">@rct.DoktorProfil.DoktorAd @rct.DoktorProfil.DoktorSoyad</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(rct.Tarih).ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </table>
+    <br />
+</body>
+</html>

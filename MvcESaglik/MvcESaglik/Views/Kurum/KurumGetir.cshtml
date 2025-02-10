@@ -1,0 +1,27 @@
+﻿@model MvcESaglik.Models.Siniflar.Kurum
+@{
+    ViewBag.Title = "KurumGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Kurum Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("KurumGuncelle", "Kurum", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.KurumID)
+    @Html.LabelFor(x => x.KurumAd)
+    @Html.TextBoxFor(x => x.KurumAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KurumAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.İlce.İlceID)
+    @Html.DropDownListFor(x => x.İlceid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.İl.İlID)
+    @Html.DropDownListFor(x => x.İlid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Durum, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

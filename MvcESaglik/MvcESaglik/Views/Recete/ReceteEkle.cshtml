@@ -1,0 +1,20 @@
+﻿@model MvcESaglik.Models.Siniflar.Recete
+@{
+    ViewBag.Title = "ReceteEkle";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<br />
+<h2>Reçete Oluşturma Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.Tarih)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.DoktorProfil.DoktorID)
+    @Html.DropDownListFor(x => x.Doktorid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciProfil.TcNo)
+    @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

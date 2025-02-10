@@ -1,0 +1,57 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MvcESaglik.Models.Siniflar
+@model PagedList.IPagedList<Randevu>
+@{
+    ViewBag.Title = "RandevuGecmis";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Doktorun Baktığı Hastalar</h2>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active" style="font-size:20px; color:blueviolet ">Doktor Adı: @ViewBag.hbak</li>
+    </ol>
+    <table class="table table-condensed" id="t01">
+        <tr>
+            <th>Randevu No</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Kurum</th>
+            <th>Hasta</th>
+            <th>Yazdır</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.RandevuNo</td>
+                <td>@Convert.ToDateTime(x.Tarih).ToString("dd/MM/yyyy")</td>
+                <td>@x.Saat</td>
+                <td>@x.Kurum.KurumAd</td>
+                <td>@x.KullaniciProfil.KullaniciAd @x.KullaniciProfil.KullaniciSoyad</td>
+                <td><a href="#" class="btn btn-warning">Yazdır</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("RandevuGecmis",
+    new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
+</body>
+</html>

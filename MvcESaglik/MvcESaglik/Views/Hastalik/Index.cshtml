@@ -1,0 +1,44 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Hastalik>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>HASTALIK SAYFASI</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Hastalık ID</th>
+            <th>Hasta İsmi</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var hst in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@hst.HastalikID</td>
+                <td style="font-family:Centaur; font-size:22px">@hst.KullaniciProfil.KullaniciAd @hst.KullaniciProfil.KullaniciSoyad</td>
+                <td><a href="/Hastalik/HastaDetay/@hst.HastalikID" class="btn btn-success" style="background-color:coral">Detay</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

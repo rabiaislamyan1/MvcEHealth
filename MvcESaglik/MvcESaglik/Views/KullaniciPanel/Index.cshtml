@@ -1,0 +1,98 @@
+﻿@model MvcESaglik.Models.Siniflar.KullaniciProfil
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/KullaniciLayout.cshtml";
+}
+<h2>Mvc Online E-Sağlık Kullanıcı Bilgi Paneli</h2>
+<br />
+@using (Html.BeginForm("Index", "KullaniciPanel", FormMethod.Post))
+{
+    <table class="table table-hover">
+
+        <tr>
+            <td>
+                <label>Tc Kimlik No: @HttpContext.Current.User.Identity.Name</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.KullaniciAd, new { @class = "form-control" })
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.KullaniciSoyad, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.KullaniciMail, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.Cinsiyet, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.AileHekimi, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.Yas, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.Kilo, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.Boy, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.KullaniciSifre, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.KanGrubu, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(x => x.TelNo, new { @class = "form-control" })
+            </td>
+        </tr>
+
+    </table>
+    <button class="btn btn-warning">Bilgilerimi Güncelle</button>
+}

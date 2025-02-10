@@ -1,0 +1,60 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<ReceteIlac>
+@{
+    ViewBag.Title = "ReceteDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>İlaç Detay Sayfası</h2>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active" style="font-size:20px; color:blueviolet">Hasta Adı: @ViewBag.klnc</li>
+    </ol>
+    <table class="table table-hover" id="t01">
+        <tr>
+            <th>Barkod</th>
+            <th>Hasta</th>
+            <th>İlaç İsmi</th>
+            <th>Açıklama</th>
+            <th>Doz</th>
+            <th>Periyot</th>
+            <th>Kullanım Şekli</th>
+            <th>Kullanım Sayısı</th>
+            <th>Kutu Adedi</th>
+            <th>Kutu Resmi</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@x.Barkod</td>
+                <td style="font-size:15px">@x.KullaniciProfilTcNo</td>
+                <td style="font-family:Centaur; font-size:22px">@x.İlacAd</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Aciklama</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Doz</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Periyot</td>
+                <td style="font-family:Centaur; font-size:22px">@x.KullanimSekli</td>
+                <td style="font-family:Centaur; font-size:22px">@x.KullanimSayisi</td>
+                <td style="font-family:Centaur; font-size:22px">@x.KutuAdedi</td>
+                <td><img src="@x.İlacGorsel" style="width:100px; height:70px;" /></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

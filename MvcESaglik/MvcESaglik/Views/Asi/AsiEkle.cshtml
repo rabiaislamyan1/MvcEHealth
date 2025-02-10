@@ -1,0 +1,24 @@
+﻿@model MvcESaglik.Models.Siniflar.Asi
+@{
+    ViewBag.Title = "AsiEkle";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<br />
+<h2>Aşı Ekleme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.AsiAd)
+    @Html.TextBoxFor(x => x.AsiAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AsiAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.AsiTarihi)
+    @Html.TextBoxFor(x => x.AsiTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kurum.KurumID)
+    @Html.DropDownListFor(x => x.Kurumid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciProfil.TcNo)
+    @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

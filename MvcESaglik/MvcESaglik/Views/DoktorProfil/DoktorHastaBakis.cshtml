@@ -1,0 +1,49 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Randevu>
+@{
+    ViewBag.Title = "DoktorHastaBakis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Doktorun Baktığı Hastalar</h2>
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active" style="font-size:20px; color:blueviolet ">Doktor Adı: @ViewBag.hbak</li>
+    </ol>
+    <table class="table table-condensed" id="t01">
+        <tr>
+            <th>Randevu No</th>
+            <th>Tarih</th>
+            <th>Hasta</th>
+            <th>Yazdır</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.RandevuNo</td>
+                <td>@Convert.ToDateTime(x.Tarih).ToString("dd/MM/yyyy")</td>
+                <td>@x.KullaniciProfil.KullaniciAd @x.KullaniciProfil.KullaniciSoyad</td>
+                <td><a href="#" class="btn btn-warning">Yazdır</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

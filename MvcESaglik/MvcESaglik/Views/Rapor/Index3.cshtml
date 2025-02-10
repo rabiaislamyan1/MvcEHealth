@@ -1,0 +1,48 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Rapor>
+@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/Shared/KullaniciLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>RAPORLAR</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Rapor No</th>
+            <th>Veriliş Tarihi</th>
+            <th>Hasta</th>
+            <th>Detaylar</th>
+            <th>Yazdır</th>
+        </tr>
+        @foreach (var rpr in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@rpr.RaporNo</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(rpr.VerilisTarihi).ToString("dd/MM/yyyy")</td>
+                <td style="font-family:Centaur; font-size:22px">@rpr.KullaniciProfil.KullaniciAd @rpr.KullaniciProfil.KullaniciSoyad</td>
+                <td><a href="/Rapor/RaporDetay2/@rpr.RaporNo" class="btn btn-success" style="background-color:coral">Detay</a></td>
+                <td><a href="#" class="btn btn-success">Yazdır</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+</body>
+</html>

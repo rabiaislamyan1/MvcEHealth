@@ -1,0 +1,49 @@
+﻿@model MvcESaglik.Models.Siniflar.DoktorProfil
+@{
+    ViewBag.Title = "DoktorGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Doktor Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("DoktorGuncelle", "DoktorProfil", FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    @Html.HiddenFor(x => x.DoktorID)
+    @Html.LabelFor(x => x.DoktorAd)
+    @Html.TextBoxFor(x => x.DoktorAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DoktorAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.DoktorSoyad)
+    @Html.TextBoxFor(x => x.DoktorSoyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DoktorSoyad, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.DoktorGorsel)
+    @* Html.TextBoxFor(x => x.DoktorGorsel, new { @class = "form-control" }) *@
+    <input type="file" name="DoktorGorsel" />
+    <br />
+    @Html.LabelFor(x => x.Yas)
+    @Html.TextBoxFor(x => x.Yas, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Cinsiyet)
+    @Html.TextBoxFor(x => x.Cinsiyet, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Cinsiyet, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.DoktorMail)
+    @Html.TextBoxFor(x => x.DoktorMail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.DoktorMail, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.TelNo)
+    @Html.TextBoxFor(x => x.TelNo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.TelNo, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Brans.BransID)
+    @Html.DropDownListFor(x => x.Bransid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kurum.KurumID)
+    @Html.DropDownListFor(x => x.Kurumid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

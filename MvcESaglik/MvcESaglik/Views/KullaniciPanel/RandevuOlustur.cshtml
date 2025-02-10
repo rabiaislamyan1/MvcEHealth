@@ -1,0 +1,51 @@
+﻿@model MvcESaglik.Models.Siniflar.Randevu
+@{
+    ViewBag.Title = "RandevuOlustur";
+    Layout = "~/Views/Shared/KullaniciLayout.cshtml";
+}
+@using (Html.BeginForm("RandevuOlustur", "KullaniciPanel", FormMethod.Post))
+{
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Randevu Oluştur</button>
+    <div class="modal" id="Modal1" style="background-color:pink">
+        <div class="modal-dialog" style="background-color:aqua">
+            <div class="modal-content" style="background-color:antiquewhite">
+                <div class="modal-header">
+                    <h2 class="modal-title">Randevu Oluşturma Ekranı</h2>
+                </div>
+                <form method="post" action="/KullaniciPanel/RandevuOlustur/">
+                    <div class="modal-body">
+                        <label>Tarih</label>
+                        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+                        <br />
+                        <label>Doktor</label>
+                        @Html.DropDownListFor(x => x.Doktorid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                        <br />
+                        <label>İl</label>
+                        @Html.DropDownListFor(x => x.İlid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                        <br />
+                        <label>İlçe</label>
+                        @Html.DropDownListFor(x => x.İlceid, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+                        <br />
+                        <label>Klinik</label>
+                        @Html.DropDownListFor(x => x.Klinikid, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+                        <br />
+                        <label>Kurum</label>
+                        @Html.DropDownListFor(x => x.Kurumid, (List<SelectListItem>)ViewBag.dgr5, new { @class = "form-control" })
+                        <br />
+                        <label>Hasta</label>
+                        @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr6, new { @class = "form-control" })
+                        <br />
+                        <label>Durum</label>
+                        @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+                        <br />
+                        <label>Saat</label>
+                        @Html.TextBoxFor(x => x.Saat, new { @class = "form-control" })
+                        <br />
+                        <button type="submit" class="btn btn-info">Oluştur</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

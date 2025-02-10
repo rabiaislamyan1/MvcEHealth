@@ -1,0 +1,50 @@
+﻿@model MvcESaglik.Models.Siniflar.ReceteIlac
+@{
+    ViewBag.Title = "ReceteIlacYaz";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<br />
+<h2>İlaç Yazma Sayfası</h2>
+<br />
+@using (Html.BeginForm("ReceteIlacYaz", "Recete", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.Barkod)
+        @Html.TextBoxFor(x => x.Barkod, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.İlacAd)
+        @Html.TextBoxFor(x => x.İlacAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.İlacAd, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Aciklama)
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Doz)
+        @Html.TextBoxFor(x => x.Doz, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Periyot)
+        @Html.TextBoxFor(x => x.Periyot, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.KullanimSekli)
+        @Html.TextBoxFor(x => x.KullanimSekli, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.KullanimSayisi)
+        @Html.TextBoxFor(x => x.KullanimSayisi, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.KutuAdedi)
+        @Html.TextBoxFor(x => x.KutuAdedi, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.İlacGorsel)
+        @* Html.TextBoxFor(x => x.İlacGorsel, new { @class = "form-control" }) *@
+        <input type="file" name="İlacGorsel" />
+        <br />
+        @Html.LabelFor(x => x.Receteno)
+        @Html.TextBoxFor(x => x.Receteno, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.KullaniciProfil.TcNo)
+        @* Html.TextBoxFor(x => x.KullaniciProfilTcNo, new { @class = "form-control" }) *@
+        @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}

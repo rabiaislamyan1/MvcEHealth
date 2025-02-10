@@ -1,0 +1,53 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<DoktorProfil>
+@{
+    ViewBag.Title = "DoktorDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <br />
+    <h2>Doktor Detay Sayfası</h2>
+    <br />
+    <table class="table table-hover" id="t01">
+        <tr>
+            <th>Doktor ID</th>
+            <th>Doktor İsmi</th>
+            <th>Görsel</th>
+            <th>Yaşı</th>
+            <th>Branşı</th>
+            <th>Çalıştığı Kurum</th>
+            <th>Hastaları</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@x.DoktorID</td>
+                <td style="font-family:Centaur; font-size:22px">@x.DoktorAd @x.DoktorSoyad</td>
+                <td><img src="@x.DoktorGorsel" style="width:100px; height:70px;" /></td>
+                <td style="font-family:Centaur; font-size:22px">@x.Yas</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Brans.BransAd</td>
+                <td style="font-family:Centaur; font-size:22px">@x.Kurum.KurumAd</td>
+                <td><a href="/DoktorProfil/DoktorHastaBakis/@x.DoktorID" class="btn btn-default" style="background-color:orangered">Hastaları</a> </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

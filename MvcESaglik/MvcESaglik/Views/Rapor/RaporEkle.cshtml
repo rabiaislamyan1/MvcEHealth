@@ -1,0 +1,29 @@
+﻿@model MvcESaglik.Models.Siniflar.Rapor
+@{
+    ViewBag.Title = "RaporEkle";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<br />
+<h2>Rapor Ekleme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.VerilisTarihi)
+    @Html.TextBoxFor(x => x.VerilisTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.RaporTur)
+    @Html.TextBoxFor(x => x.RaporTur, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BaslangicTarihi)
+    @Html.TextBoxFor(x => x.BaslangicTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BitisTarihi)
+    @Html.TextBoxFor(x => x.BitisTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tani)
+    @Html.TextBoxFor(x => x.Tani, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciProfil.TcNo)
+    @Html.DropDownListFor(x => x.KullaniciProfilTcNo, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

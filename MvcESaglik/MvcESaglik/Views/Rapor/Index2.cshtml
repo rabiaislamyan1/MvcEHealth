@@ -1,0 +1,53 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Rapor>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>RAPORLAR</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Rapor No</th>
+            <th>Veriliş Tarihi</th>
+            <th>Rapor Türü</th>
+            <th>Başlangıç Tarihi</th>
+            <th>Bitiş Tarihi</th>
+            <th>Tanı</th>
+            <th>Hasta</th>
+        </tr>
+        @foreach (var rpr in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@rpr.RaporNo</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(rpr.VerilisTarihi).ToString("dd/MM/yyyy")</td>
+                <td style="font-family:Centaur; font-size:22px">@rpr.RaporTur</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(rpr.BaslangicTarihi).ToString("dd/MM/yyyy")</td>
+                <td style="font-family:Centaur; font-size:22px">@Convert.ToDateTime(rpr.BitisTarihi).ToString("dd/MM/yyyy")</td>
+                <td style="font-family:Centaur; font-size:22px">@rpr.Tani</td>
+                <td style="font-family:Centaur; font-size:22px">@rpr.KullaniciProfil.KullaniciAd @rpr.KullaniciProfil.KullaniciSoyad</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Rapor/RaporEkle/" class="btn btn-primary">Yeni Rapor Oluştur</a>
+</body>
+</html>

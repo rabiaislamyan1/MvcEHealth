@@ -1,0 +1,55 @@
+﻿@using MvcESaglik.Models.Siniflar
+@model List<Alerji>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/DoktorLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>ALERJİ SAYFASI</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Alerji ID</th>
+            <th>Alerji Adı</th>
+            <th>Hasta</th>
+            <th>Sil</th>
+        </tr>
+        @foreach (var alrj in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@alrj.AlerjiID</td>
+                <td style="font-family:Centaur; font-size:20px">@alrj.AlerjiAd</td>
+                <td style="font-family:Centaur; font-size:20px">@alrj.KullaniciProfil.KullaniciAd @alrj.KullaniciProfil.KullaniciSoyad</td>
+                <td>@Html.ActionLink("Sil","AlerjiSil",new { id=alrj.AlerjiID},
+                   new {@class="btn btn-warning", onclick="return confirm('Silmek İstiyor musunuz?')"})</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <div style="margin-top:15px">
+        <a href="/Alerji/AlerjiEkle/" class="btn btn-primary" id="btn1">Yeni Alerji Ekle</a>
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alert('Alerji Eklendi');
+        });
+    </script>
+</body>
+</html>

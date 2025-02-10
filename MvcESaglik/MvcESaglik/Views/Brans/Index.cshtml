@@ -1,0 +1,64 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MvcESaglik.Models.Siniflar
+@model PagedList.IPagedList<Brans>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table#t01 tr:nth-child(even) {
+            background-color: #f0ef9a;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #ae91ef;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Brans", FormMethod.Get))
+    {
+        <p style="color:deeppink">
+            Branş Adı: @Html.TextBox("p")
+            <input type="submit" value="Ara" style="color:deepskyblue" />
+        </p>
+    }
+    <br />
+    <h2>BRANŞLAR</h2>
+    <table class="table table-bordered" style="margin-top:20px" id="t01">
+        <tr>
+            <th>Branş ID</th>
+            <th>Branş Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var brns in Model)
+        {
+            <tr>
+                <td style="font-size:15px">@brns.BransID</td>
+                <td style="font-family:Centaur; font-size:22px">@brns.BransAd</td>
+                <td>
+                    @Html.ActionLink("Sil", "BransSil", new { id = brns.BransID },
+               new { @class = "btn btn-warning", onclick = "return confirm('Silmek İstiyor musunuz?')" })
+                </td>
+                <td><a href="/Brans/BransGetir/@brns.BransID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index",
+    new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
+    <br />
+    <a href="/Brans/BransEkle/" class="btn btn-primary">Yeni Branş Ekle</a>
+</body>
+</html>
